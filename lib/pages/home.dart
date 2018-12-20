@@ -8,10 +8,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('首页')),
-      body: _buildBody(context),
-    );
+    return _buildBody(context);
   }
 
   Center _buildBody(BuildContext context) {

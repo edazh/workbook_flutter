@@ -8,10 +8,7 @@ class ExamplePage extends StatefulWidget {
 class _ExamplePageState extends State<ExamplePage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('例子')),
-      body: _buildBody(context),
-    );
+    return _buildBody(context);
   }
 
   Center _buildBody(BuildContext context) {

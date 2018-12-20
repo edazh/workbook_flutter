@@ -15,52 +15,33 @@ class _IndexPageState extends State<IndexPage>
   List<Widget> _pages;
 
   int _currentNav = 0;
+
   @override
   void initState() {
     super.initState();
+    print('initState');
     _bottomItems = _buildBottomItems();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 700),
-    );
     _pages = [
-      FadeTransition(
-        child: HomePage(),
-        opacity: CurvedAnimation(
-          parent: _animationController,
-          curve: Curves.easeInOut,
-        ),
-      ),
-      FadeTransition(
-        child: ExamplePage(),
-        opacity: CurvedAnimation(
-          parent: _animationController,
-          curve: Curves.easeInOut,
-        ),
-      ),
-      FadeTransition(
-        child: TestPage(),
-        opacity: CurvedAnimation(
-          parent: _animationController,
-          curve: Curves.easeInOut,
-        ),
-      ),
+      HomePage(),
+      ExamplePage(),
+      TestPage(),
     ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Flexible(
-          child: _pages[_currentNav],
-        ),
-        BottomNavigationBar(
-          items: _bottomItems,
-          onTap: _selectNav,
-          currentIndex: _currentNav,
-        ),
-      ],
+    print('build');
+    return Scaffold(
+      body: AnimatedSwitcher(
+        child: _pages[_currentNav],
+        duration: Duration(milliseconds: 300),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        type: BottomNavigationBarType.shifting,
+        items: _bottomItems,
+        onTap: _selectNav,
+        currentIndex: _currentNav,
+      ),
     );
   }
 
@@ -69,17 +50,28 @@ class _IndexPageState extends State<IndexPage>
       BottomNavigationBarItem(
         icon: Icon(Icons.home),
         title: Text('首页'),
+        backgroundColor: Colors.blue,
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.apps),
+        icon: Stack(
+          children: <Widget>[
+            Icon(Icons.apps),
+          ],
+        ),
         title: Text('例子'),
+        backgroundColor: Colors.green,
       ),
       BottomNavigationBarItem(
-        icon: Icon(Icons.art_track),
+        icon: Icon(Icons.account_box),
         title: Text('测试'),
+        backgroundColor: Colors.cyan,
       ),
     ];
   }
+
+  // List<Widget> _buildAnimationPages(){
+
+  // }
 
   void _selectNav(int index) {
     setState(() => _currentNav = index);

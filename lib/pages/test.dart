@@ -8,10 +8,7 @@ class TestPage extends StatefulWidget {
 class _TestPageState extends State<TestPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text('测试')),
-      body: _buildBody(context),
-    );
+    return _buildBody(context);
   }
 
   Center _buildBody(BuildContext context) {
