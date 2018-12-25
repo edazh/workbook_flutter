@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'home.dart';
 import 'example.dart';
@@ -37,13 +39,27 @@ class _IndexPageState extends State<IndexPage>
         duration: Duration(milliseconds: 300),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
         items: _bottomItems,
         onTap: _selectNav,
         currentIndex: _currentNav,
       ),
     );
   }
+
+  // bool _shouldQuit = false;
+  // Future<bool> _onWillPop() {
+  //   if (!_shouldQuit) {
+  //     _shouldQuit = true;
+  //     print('再按一下试试');
+  //     Scaffold.of(context).showSnackBar(SnackBar(
+  //       content: Text('再按一下试试'),
+  //     ));
+  //     Timer(Duration(seconds: 2), () => _shouldQuit = false);
+
+  //     return Future.value(false);
+  //   }
+  //   return Future.value(_shouldQuit);
+  // }
 
   List<BottomNavigationBarItem> _buildBottomItems() {
     return <BottomNavigationBarItem>[
@@ -69,11 +85,9 @@ class _IndexPageState extends State<IndexPage>
     ];
   }
 
-  // List<Widget> _buildAnimationPages(){
-
-  // }
-
+  ///底部导航被点击
   void _selectNav(int index) {
+    if (_currentNav == index) return;
     setState(() => _currentNav = index);
     _animationController?.forward();
   }
