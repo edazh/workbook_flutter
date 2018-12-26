@@ -33,6 +33,9 @@ class _VideoPageState extends State<VideoPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('直播播放'),
+      ),
       body: Center(
         child: _controller.value.initialized
             ? AspectRatio(

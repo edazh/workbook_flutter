@@ -35,7 +35,7 @@ class Colock extends StatefulWidget {
 }
 
 class _ColockState extends State<Colock> {
-  int _duration = 5;
+  int _duration = 3;
   @override
   void initState() {
     super.initState();
