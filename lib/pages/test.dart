@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'splash.dart';
 import 'guide.dart';
 import 'video.dart';
+import 'battery.dart';
+import 'live.dart';
 
 class TestPage extends StatefulWidget {
   @override
@@ -49,6 +51,20 @@ class _TestPageState extends State<TestPage> {
           onTap: () {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (ctx) => VideoPage()));
+          },
+        ),
+        ListTile(
+          title: Text('测试夸平台'),
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctx) => BatteryPage()));
+          },
+        ),
+         ListTile(
+          title: Text('测试打开原生直播页'),
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctx) => LivePage()));
           },
         ),
       ],
