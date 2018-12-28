@@ -5,6 +5,7 @@ import 'guide.dart';
 import 'video.dart';
 import 'battery.dart';
 import 'live.dart';
+import 'toast.dart';
 
 class TestPage extends StatefulWidget {
   @override
@@ -54,17 +55,24 @@ class _TestPageState extends State<TestPage> {
           },
         ),
         ListTile(
-          title: Text('测试夸平台'),
+          title: Text('测试跨平台'),
           onTap: () {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (ctx) => BatteryPage()));
           },
         ),
-         ListTile(
+        ListTile(
           title: Text('测试打开原生直播页'),
           onTap: () {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (ctx) => LivePage()));
+          },
+        ),
+        ListTile(
+          title: Text('Toast'),
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctx) => ToastPage()));
           },
         ),
       ],

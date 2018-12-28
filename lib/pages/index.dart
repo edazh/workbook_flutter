@@ -32,6 +32,9 @@ class _IndexPageState extends State<IndexPage>
   Widget build(BuildContext context) {
     print('build');
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Flutter练习册'),
+      ),
       body: AnimatedSwitcher(
         child: _pages[_currentNav],
         duration: Duration(milliseconds: 300),

@@ -11,7 +11,6 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: IndexPage(),
-      initialRoute: '/splash',
       onGenerateRoute: _generateRoute,
     );
   }
