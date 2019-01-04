@@ -6,6 +6,8 @@ import 'video.dart';
 import 'battery.dart';
 import 'live.dart';
 import 'toast.dart';
+import 'bottom_action.dart';
+import 'dialog.dart';
 
 class TestPage extends StatefulWidget {
   @override
@@ -74,6 +76,17 @@ class _TestPageState extends State<TestPage> {
             Navigator.of(context)
                 .push(MaterialPageRoute(builder: (ctx) => ToastPage()));
           },
+        ),
+        ListTile(
+          title: Text('BottomAction'),
+          onTap: () {
+            Navigator.of(context)
+                .push(MaterialPageRoute(builder: (ctx) => BottomActionPage()));
+          },
+        ),
+        ListTile(
+          title: Text('Dialog'),
+          onTap: ()=>Navigator.of(context).push(MaterialPageRoute(builder: (_)=>DialogPage())),
         ),
       ],
     );

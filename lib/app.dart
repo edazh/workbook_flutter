@@ -7,9 +7,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Workbook',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: _buildTheme(),
       home: IndexPage(),
       onGenerateRoute: _generateRoute,
     );
@@ -23,6 +21,16 @@ class App extends StatelessWidget {
     return MaterialPageRoute(
       builder: (BuildContext context) => SplashPage(),
       settings: settings
+    );
+  }
+
+  ThemeData _buildTheme(){
+    ThemeData base = ThemeData.light();
+    MaterialColor primaryColor = Colors.blue;
+    
+    return base.copyWith(
+      primaryColor: primaryColor,
+      splashFactory: InkRipple.splashFactory,
     );
   }
 }
