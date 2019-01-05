@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import '../widgets/dialog.dart' as dialog;
 
@@ -13,10 +15,9 @@ class DialogPage extends StatelessWidget {
             onTap: () async {
               dialog.DialogAction action =
                   await showDialog<dialog.DialogAction>(
-                barrierDismissible: false,
                 context: context,
                 builder: (_) =>
-                    dialog.Alert(title: 'Alert标题', content: 'Alert内容'),
+                    const dialog.Alert(title: 'Alert标题', content: 'Alert内容'),
               );
               _logAction(action);
             },
@@ -26,12 +27,23 @@ class DialogPage extends StatelessWidget {
             onTap: () async {
               dialog.DialogAction action =
                   await showDialog<dialog.DialogAction>(
-                barrierDismissible: false,
                 context: context,
-                builder: (_) =>
-                    dialog.Alert(title: 'Alert标题', content: 'Alert内容'),
+                builder: (_) => const dialog.Confirm(
+                      title: '标题',
+                      content: '内容',
+                      confirmText: '知道了',
+                    ),
               );
               _logAction(action);
+            },
+          ),
+          ListTile(
+            title: Text('LoadingDialog'),
+            onTap: () {
+              showDialog<dialog.DialogAction>(
+                context: context,
+                builder: (_) => const dialog.Loading(content: '正在加载'),
+              );
             },
           ),
         ],
